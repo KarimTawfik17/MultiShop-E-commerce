@@ -199,7 +199,7 @@
             <span class="bg-secondary pr-3">Filter by price</span>
           </h5>
           <div class="bg-light p-4 mb-30">
-            <form>
+            <form id="price-filter">
               <div
                 class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3"
               >
@@ -207,6 +207,7 @@
                   type="checkbox"
                   class="custom-control-input"
                   checked
+                  name="all"
                   id="price-all"
                 />
                 <label class="custom-control-label" for="price-all"
@@ -217,6 +218,7 @@
                 class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3"
               >
                 <input
+                  name="0"
                   type="checkbox"
                   class="custom-control-input"
                   id="price-1"
@@ -232,6 +234,7 @@
                   type="checkbox"
                   class="custom-control-input"
                   id="price-2"
+                  name="100"
                 />
                 <label class="custom-control-label" for="price-2"
                   >$100 - $200</label
@@ -244,6 +247,7 @@
                   type="checkbox"
                   class="custom-control-input"
                   id="price-3"
+                  name="200"
                 />
                 <label class="custom-control-label" for="price-3"
                   >$200 - $300</label
@@ -256,6 +260,7 @@
                   type="checkbox"
                   class="custom-control-input"
                   id="price-4"
+                  name="300"
                 />
                 <label class="custom-control-label" for="price-4"
                   >$300 - $400</label
@@ -268,6 +273,7 @@
                   type="checkbox"
                   class="custom-control-input"
                   id="price-5"
+                  name="400"
                 />
                 <label class="custom-control-label" for="price-5"
                   >$400 - $500</label
@@ -282,7 +288,7 @@
             <span class="bg-secondary pr-3">Filter by color</span>
           </h5>
           <div class="bg-light p-4 mb-30">
-            <form>
+            <form id="color-filter">
               <div
                 class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3"
               >
@@ -291,6 +297,7 @@
                   class="custom-control-input"
                   checked
                   id="color-all"
+                  name="all"
                 />
                 <label class="custom-control-label" for="color-all"
                   >All Color</label
@@ -303,6 +310,7 @@
                   type="checkbox"
                   class="custom-control-input"
                   id="color-1"
+                  name="black"
                 />
                 <label class="custom-control-label" for="color-1">Black</label>
               </div>
@@ -313,6 +321,7 @@
                   type="checkbox"
                   class="custom-control-input"
                   id="color-2"
+                  name="white"
                 />
                 <label class="custom-control-label" for="color-2">White</label>
               </div>
@@ -323,6 +332,7 @@
                   type="checkbox"
                   class="custom-control-input"
                   id="color-3"
+                  name="red"
                 />
                 <label class="custom-control-label" for="color-3">Red</label>
               </div>
@@ -333,6 +343,7 @@
                   type="checkbox"
                   class="custom-control-input"
                   id="color-4"
+                  name="blue"
                 />
                 <label class="custom-control-label" for="color-4">Blue</label>
               </div>
@@ -343,6 +354,7 @@
                   type="checkbox"
                   class="custom-control-input"
                   id="color-5"
+                  name="green"
                 />
                 <label class="custom-control-label" for="color-5">Green</label>
               </div>
@@ -355,7 +367,7 @@
             <span class="bg-secondary pr-3">Filter by size</span>
           </h5>
           <div class="bg-light p-4 mb-30">
-            <form>
+            <form id="size-filter">
               <div
                 class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3"
               >
@@ -364,6 +376,7 @@
                   class="custom-control-input"
                   checked
                   id="size-all"
+                  name="all"
                 />
                 <label class="custom-control-label" for="size-all"
                   >All Size</label
@@ -376,6 +389,7 @@
                   type="checkbox"
                   class="custom-control-input"
                   id="size-1"
+                  name="XS"
                 />
                 <label class="custom-control-label" for="size-1">XS</label>
               </div>
@@ -386,6 +400,7 @@
                   type="checkbox"
                   class="custom-control-input"
                   id="size-2"
+                  name="S"
                 />
                 <label class="custom-control-label" for="size-2">S</label>
               </div>
@@ -396,6 +411,7 @@
                   type="checkbox"
                   class="custom-control-input"
                   id="size-3"
+                  name="M"
                 />
                 <label class="custom-control-label" for="size-3">M</label>
               </div>
@@ -406,6 +422,7 @@
                   type="checkbox"
                   class="custom-control-input"
                   id="size-4"
+                  name="L"
                 />
                 <label class="custom-control-label" for="size-4">L</label>
               </div>
@@ -416,6 +433,7 @@
                   type="checkbox"
                   class="custom-control-input"
                   id="size-5"
+                  name="XL"
                 />
                 <label class="custom-control-label" for="size-5">XL</label>
               </div>
