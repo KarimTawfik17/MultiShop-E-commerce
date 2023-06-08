@@ -12,9 +12,17 @@ class User {
     this.password = password;
   }
 }
-
+const validateEmail = function (email) {
+  return /\S+@\S+\.\S+/.test(email);
+};
 const validateInput = function (firstName, lastName, email, password) {
-  return true;
+  let passRe =
+    /^(?=(.*[a-z]){3,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[!@#$%^&*()\-__+.]){1,}).{8,}$/;
+  return (
+    /^[A-Za-z]*$/.test(firstName, lastName) &&
+    validateEmail(email) &&
+    passRe.test(password)
+  );
 };
 
 const sendRegReq = async function (user) {
@@ -43,6 +51,7 @@ const sendLogReq = async function (email, password) {
 const signIn = function (user) {
   localStorage.setItem("userID", user.id);
   localStorage.setItem("token", user.token);
+  window.location.href = "/";
 };
 
 const register = function (firstName, lastName, email, password) {
@@ -61,7 +70,7 @@ const register = function (firstName, lastName, email, password) {
 };
 
 const login = function (email, password) {
-  if (validateInput(email, password)) {
+  if (validateEmail(email, password)) {
     sendLogReq(email, password).then((user) => {
       signIn(user);
     });
