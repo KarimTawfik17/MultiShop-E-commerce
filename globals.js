@@ -11,7 +11,7 @@ export async function getCategories() {
 }
 
 export async function getProducts() {
-  const cachedProducts = localStorage.getItem("categories");
+  const cachedProducts = localStorage.getItem("products");
   if (cachedProducts) {
     return JSON.parse(cachedProducts);
   }
@@ -36,5 +36,5 @@ export function addToFavorites() {
 export function getFavorites() {
   return localStorage.getItem("favorites") || 0;
 }
-getCategories().then((data) => console.log(data));
-getProducts().then((data) => console.log(data));
+// getCategories().then((data) => console.log(data));
+// getProducts().then((data) => console.log(data));
