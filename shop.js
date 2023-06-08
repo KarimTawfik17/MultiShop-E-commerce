@@ -2,12 +2,14 @@ import { getProducts } from "./globals.js";
 import renderProducts from "./view.js";
 let startProduct = 0;
 let productPerPage = 9;
+let allProducts = [];
 let viewedProducts = [];
 function reRender() {
   //   console.log(viewedProducts[0]);
   renderProducts(viewedProducts, startProduct, productPerPage);
 }
 getProducts().then((products) => {
+  allProducts = products;
   viewedProducts = products;
   reRender();
 });
@@ -39,6 +41,7 @@ document.getElementById("sort-products").onclick = (e) => {
     default:
       throw new Error("Unexpected sorting type : ", sortType);
   }
-  viewedProducts = viewedProducts.sort(sortFn);
+
+  viewedProducts = [...allProducts].sort(sortFn);
   reRender();
 };
