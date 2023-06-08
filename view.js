@@ -1,7 +1,7 @@
 export default function renderProducts(products, start = 0, count = 9) {
   const parent = document.getElementById("products");
   parent.innerHTML = "";
-  for (let i = start; i < start + count; i++) {
+  for (let i = start; i < start + count && i < products.length; i++) {
     parent.appendChild(createProductUI(products[i]));
   }
 }
