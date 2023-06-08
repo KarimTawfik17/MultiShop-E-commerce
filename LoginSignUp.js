@@ -1,5 +1,6 @@
 //Hussein
 //User Class that has all User data.
+import { Cart } from "./Cart";
 class User {
   id;
   firstName;
@@ -56,6 +57,10 @@ const sendLogReq = async function (email, password) {
 const signIn = function (user) {
   localStorage.setItem("userID", user.id);
   localStorage.setItem("token", user.token);
+  if (!localStorage.getItem("Cart")) {
+    const cart = new Cart();
+    localStorage.setItem("Cart", "");
+  }
   window.location.href = "/";
 };
 //register function takes customer input and turn it into an object and send it to API after validating.
