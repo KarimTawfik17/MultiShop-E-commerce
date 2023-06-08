@@ -1,3 +1,5 @@
+//Hussein
+//User Class that has all User data.
 class User {
   id;
   firstName;
@@ -12,9 +14,11 @@ class User {
     this.password = password;
   }
 }
+// validating email
 const validateEmail = function (email) {
   return /\S+@\S+\.\S+/.test(email);
 };
+//validating firstname and lastname to be plain text and password to be at least 8 characters long and has capital letters and numbers and special characters.
 const validateInput = function (firstName, lastName, email, password) {
   let passRe =
     /^(?=(.*[a-z]){3,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[!@#$%^&*()\-__+.]){1,}).{8,}$/;
@@ -24,7 +28,7 @@ const validateInput = function (firstName, lastName, email, password) {
     passRe.test(password)
   );
 };
-
+//send a request to register a user and save info in database
 const sendRegReq = async function (user) {
   const response = await fetch("http://localhost:5000/api/users/register", {
     headers: {
@@ -36,7 +40,7 @@ const sendRegReq = async function (user) {
   });
   return await response.json();
 };
-
+//send a request to make sure that credentials are right and there is an existing user with those credentials
 const sendLogReq = async function (email, password) {
   const response = await fetch("http://localhost:5000/api/users/login", {
     headers: {
@@ -48,12 +52,13 @@ const sendLogReq = async function (email, password) {
   });
   return await response.json();
 };
+//after finding user under credentials provided we save userID and token in local storage and let the customer in our app
 const signIn = function (user) {
   localStorage.setItem("userID", user.id);
   localStorage.setItem("token", user.token);
   window.location.href = "/";
 };
-
+//register function takes customer input and turn it into an object and send it to API after validating.
 const register = function (firstName, lastName, email, password) {
   if (validateInput(firstName, lastName, email, password)) {
     const user = new User(firstName, lastName, email, password);
@@ -69,6 +74,7 @@ const register = function (firstName, lastName, email, password) {
   }
 };
 
+//login function takes customer input and send it to API after validating to find the user and let him in.
 const login = function (email, password) {
   if (validateEmail(email, password)) {
     sendLogReq(email, password).then((user) => {
@@ -76,7 +82,7 @@ const login = function (email, password) {
     });
   }
 };
-
+//erasing login info from local storage
 const logout = function () {
   localStorage.removeItem("userID");
   localStorage.removeItem("token");
