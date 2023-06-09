@@ -74,6 +74,7 @@ class Cart {
   }
   save() {
     localStorage.setItem("Cart", JSON.stringify(this.cartItems));
+    localStorage.setItem("");
   }
 }
 

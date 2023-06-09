@@ -60,7 +60,7 @@ const signIn = function (user) {
   localStorage.setItem("userName", user.first_name);
   if (!localStorage.getItem("Cart")) {
     const cart = new Cart();
-    localStorage.setItem("Cart", "");
+    localStorage.setItem("Cart", "[]");
   }
   window.location.href = "/";
 };
