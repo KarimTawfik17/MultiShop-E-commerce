@@ -63,8 +63,12 @@ class Cart {
     }
     this.save();
   }
+  removeAllFromCart(cartItem) {
+    this.cartItems.splice(this.cartItems.indexOf(cartItem), 1);
+    this.save();
+  }
   getSubTotal() {
-    const total = 0;
+    let total = 0;
     this.cartItems.map((item) => (total += item.getTotalPrice()));
     return total;
   }
