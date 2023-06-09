@@ -44,5 +44,15 @@ export function getFavorites() {
   return favorites.length;
 }
 
+export function getCartItemsCount() {
+  let cartItems = localStorage.getItem("Cart");
+  if (cartItems === null) {
+    console.warn("there's no cart data in storage");
+    return 0;
+  }
+  cartItems = JSON.parse(cartItems);
+  return cartItems.length;
+}
+
 // getCategories().then((data) => console.log(data));
 // getProducts().then((data) => console.log(data));
