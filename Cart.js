@@ -74,7 +74,7 @@ class Cart {
   }
   save() {
     localStorage.setItem("Cart", JSON.stringify(this.cartItems));
-    localStorage.setItem("");
+    localStorage.setItem("Subtotal", this.getSubTotal());
   }
 }
 
