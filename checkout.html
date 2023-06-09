@@ -199,188 +199,77 @@
           <div class="bg-light p-30 mb-5">
             <div class="row">
               <div class="col-md-6 form-group">
-                <label>First Name</label>
-                <input class="form-control" type="text" placeholder="John" />
+                <label for="first-name">First Name</label>
+                <input id="first-name" class="form-control " type="text" placeholder="John" required />
               </div>
               <div class="col-md-6 form-group">
-                <label>Last Name</label>
-                <input class="form-control" type="text" placeholder="Doe" />
+                <label for="last-name">Last Name</label>
+                <input id="last-name" class="form-control" type="text" placeholder="Doe" required/>
               </div>
               <div class="col-md-6 form-group">
-                <label>E-mail</label>
-                <input
-                  class="form-control"
-                  type="text"
-                  placeholder="example@email.com"
-                />
+                <label for="email">E-mail</label>
+                <input id="email" class="form-control" type="email" placeholder="example@email.com" required/>
               </div>
               <div class="col-md-6 form-group">
-                <label>Mobile No</label>
-                <input
-                  class="form-control"
-                  type="text"
-                  placeholder="+123 456 789"
-                />
+                <label for="mobile-number">Mobile No</label>
+                <input id="mobile-number" class="form-control" type="text" placeholder="+123 456 789"required />
               </div>
               <div class="col-md-6 form-group">
-                <label>Address Line 1</label>
-                <input
-                  class="form-control"
-                  type="text"
-                  placeholder="123 Street"
-                />
+                <label for="address1">Address Line 1</label>
+                <input id="address1" class="form-control" type="text" placeholder="123 Street" required/>
               </div>
               <div class="col-md-6 form-group">
-                <label>Address Line 2</label>
-                <input
-                  class="form-control"
-                  type="text"
-                  placeholder="123 Street"
-                />
+                <label for="address2">Address Line 2</label>
+                <input id="address2" class="form-control" type="text" placeholder="123 Street" />
               </div>
               <div class="col-md-6 form-group">
-                <label>Country</label>
-                <select class="custom-select">
+                <label for="country">Country</label>
+                <select id="country" class="custom-select">
                   <option selected>Egypt</option>
                   <option>USA</option>
                   <option>Algeria</option>
                 </select>
               </div>
               <div class="col-md-6 form-group">
-                <label>City</label>
-                <input
-                  class="form-control"
-                  type="text"
-                  placeholder="New York"
-                />
+                <label for="city">City</label>
+                <input id="city" class="form-control" type="text" placeholder="New York" required/>
               </div>
               <div class="col-md-6 form-group">
-                <label>State</label>
-                <input
-                  class="form-control"
-                  type="text"
-                  placeholder="New York"
-                />
+                <label for="state">State</label>
+                <input id="state" class="form-control" type="text" placeholder="New York" required/>
               </div>
               <div class="col-md-6 form-group">
-                <label>ZIP Code</label>
-                <input class="form-control" type="text" placeholder="123" />
+                <label for="zip-code">ZIP Code</label>
+                <input id="zip-code" class="form-control" type="text" placeholder="123" />
               </div>
+      
             </div>
           </div>
-          <div class="collapse mb-5" id="shipping-address">
-            <h5 class="section-title position-relative text-uppercase mb-3">
-              <span class="bg-secondary pr-3">Shipping Address</span>
-            </h5>
-            <div class="bg-light p-30">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <label>First Name</label>
-                  <input class="form-control" type="text" placeholder="John" />
-                </div>
-                <div class="col-md-6 form-group">
-                  <label>Last Name</label>
-                  <input class="form-control" type="text" placeholder="Doe" />
-                </div>
-                <div class="col-md-6 form-group">
-                  <label>E-mail</label>
-                  <input
-                    class="form-control"
-                    type="text"
-                    placeholder="example@email.com"
-                  />
-                </div>
-                <div class="col-md-6 form-group">
-                  <label>Mobile No</label>
-                  <input
-                    class="form-control"
-                    type="text"
-                    placeholder="+123 456 789"
-                  />
-                </div>
-                <div class="col-md-6 form-group">
-                  <label>Address Line 1</label>
-                  <input
-                    class="form-control"
-                    type="text"
-                    placeholder="123 Street"
-                  />
-                </div>
-                <div class="col-md-6 form-group">
-                  <label>Address Line 2</label>
-                  <input
-                    class="form-control"
-                    type="text"
-                    placeholder="123 Street"
-                  />
-                </div>
-                <div class="col-md-6 form-group">
-                  <label>Country</label>
-                  <select class="custom-select">
-                    <option selected>United States</option>
-                    <option>Afghanistan</option>
-                    <option>Albania</option>
-                    <option>Algeria</option>
-                  </select>
-                </div>
-                <div class="col-md-6 form-group">
-                  <label>City</label>
-                  <input
-                    class="form-control"
-                    type="text"
-                    placeholder="New York"
-                  />
-                </div>
-                <div class="col-md-6 form-group">
-                  <label>State</label>
-                  <input
-                    class="form-control"
-                    type="text"
-                    placeholder="New York"
-                  />
-                </div>
-                <div class="col-md-6 form-group">
-                  <label>ZIP Code</label>
-                  <input class="form-control" type="text" placeholder="123" />
-                </div>
-              </div>
-            </div>
-          </div>
+         
         </div>
         <div class="col-lg-4">
           <h5 class="section-title position-relative text-uppercase mb-3">
             <span class="bg-secondary pr-3">Order Total</span>
           </h5>
           <div class="bg-light p-30 mb-5">
-            <div class="border-bottom">
+            <div id="cart-lines" class="border-bottom">
               <h6 class="mb-3">Products</h6>
-              <div class="d-flex justify-content-between">
-                <p>Product Name 1 x (2)</p>
-                <p>$150</p>
-              </div>
-              <div class="d-flex justify-content-between">
-                <p>Product Name 2 x (1)</p>
-                <p>$150</p>
-              </div>
-              <div class="d-flex justify-content-between">
-                <p>Product Name 3 x (3)</p>
-                <p>$150</p>
-              </div>
+            
             </div>
             <div class="border-bottom pt-3 pb-2">
               <div class="d-flex justify-content-between mb-3">
                 <h6>Subtotal</h6>
-                <!-- <h6>$150</h6> -->
+                <h6  id="subtotal"></h6>
               </div>
               <div class="d-flex justify-content-between">
-                <h6 class="font-weight-medium">Tax</h6>
-                <!-- <h6 class="font-weight-medium">$10</h6> -->
+                <h6 class="font-weight-medium" id="tax">Tax</h6>
+                <h6 id="taxRate" class="font-weight-medium">10%</h6>
               </div>
             </div>
             <div class="pt-2">
               <div class="d-flex justify-content-between mt-2">
                 <h5>Total</h5>
-                <!-- <h5>$160</h5> -->
+                <h5 id="total"></h5>
               </div>
             </div>
           </div>
@@ -388,7 +277,7 @@
             <h5 class="section-title position-relative text-uppercase mb-3">
               <span class="bg-secondary pr-3">Payment</span>
             </h5>
-            <div class="bg-light p-30">
+            <div class="bg-light p-30" id="radioPar">
               <div class="form-group">
                 <div class="custom-control custom-radio">
                   <input
@@ -396,6 +285,7 @@
                     class="custom-control-input"
                     name="payment"
                     id="paypal"
+                    checked
                   />
                   <label class="custom-control-label" for="paypal"
                     >Paypal</label
@@ -408,9 +298,9 @@
                     type="radio"
                     class="custom-control-input"
                     name="payment"
-                    id="directcheck"
+                    id="cheque"
                   />
-                  <label class="custom-control-label" for="directcheck"
+                  <label class="custom-control-label" for="cheque"
                     >Direct Check</label
                   >
                 </div>
@@ -428,7 +318,7 @@
                   >
                 </div>
               </div>
-              <button class="btn btn-block btn-primary font-weight-bold py-3">
+              <button id="place-order-button" class="btn btn-block btn-primary font-weight-bold py-3">
                 Place Order
               </button>
             </div>
@@ -439,7 +329,7 @@
     <!-- Checkout End -->
 
     <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-secondary mt-5 pt-5">
+    <div  class="container-fluid bg-dark text-secondary mt-5 pt-5">
       <div class="row px-xl-5 pt-5">
         <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
           <h5 class="text-secondary text-uppercase mb-4">Get In Touch</h5>
@@ -571,5 +461,6 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="js/checkout.js"></script>
   </body>
 </html>
