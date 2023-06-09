@@ -115,6 +115,7 @@ function renderRecentProducts(products) {
   products.forEach((product) => {
     if (product.is_recent) recentProducts.push(product);
   });
+  console.log("rp",recentProducts)
   const container = document.getElementById("recent-products-container");
   let loop = 8;
   if (recentProducts.length < 9) loop = recentProducts.length;
