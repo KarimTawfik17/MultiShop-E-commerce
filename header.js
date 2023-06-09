@@ -1,5 +1,4 @@
-import { getCategories, getFavorites } from "./globals.js";
-console.log("am header running");
+import { getCartItemsCount, getCategories, getFavorites } from "./globals.js";
 // render categories
 getCategories().then(displayCategories);
 
@@ -21,6 +20,6 @@ export function renderFavoritesCount() {
 renderFavoritesCount();
 // render cart count
 export function renderCartCount() {
-  document.getElementById("cart-count").innerText = 0; // to be edited to cart count
+  document.getElementById("cart-count").innerText = getCartItemsCount(); // to be edited to cart count
 }
 renderCartCount();
