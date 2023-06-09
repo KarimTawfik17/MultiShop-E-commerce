@@ -162,3 +162,8 @@ function getCurrentPage(startEl, countPerPage) {
 function getTotalPages(totalCount, countPerPage) {
   return Math.ceil(totalCount / countPerPage);
 }
+
+export function reverseSort() {
+  const reverseBtn = document.getElementById("reverse");
+  reverseBtn.classList.remove("collapse");
+}

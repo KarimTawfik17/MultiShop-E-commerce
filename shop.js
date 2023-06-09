@@ -1,5 +1,5 @@
 import { getProducts } from "./globals.js";
-import renderProducts from "./view.js";
+import renderProducts, { reverseSort } from "./view.js";
 let startProduct = 0;
 let productPerPage = 9;
 let allProducts = [];
@@ -43,10 +43,10 @@ document.getElementById("sort-products").onclick = (e) => {
       sortFn = (p1, p2) => p1.price - p2.price;
       break;
     case "popularity":
-      sortFn = (p1, p2) => p1.rating_count - p2.rating_count;
+      sortFn = (p1, p2) => p2.rating_count - p1.rating_count;
       break;
     case "rating":
-      sortFn = (p1, p2) => p1.rating - p2.rating;
+      sortFn = (p1, p2) => p2.rating - p1.rating;
       break;
 
     default:
@@ -55,6 +55,7 @@ document.getElementById("sort-products").onclick = (e) => {
 
   viewedProducts = [...viewedProducts].sort(sortFn);
   reRender();
+  reverseSort();
 };
 
 document.getElementById("pagination").onclick = (e) => {
@@ -114,3 +115,8 @@ function filterProducts() {
   );
   reRender();
 }
+
+document.getElementById("reverse").onclick = () => {
+  viewedProducts.reverse();
+  reRender();
+};
