@@ -1,5 +1,4 @@
 'use strict'
-localStorage.clear();
 
 import {getCategories} from "./globals.js"
 import {getProducts} from "./globals.js"
@@ -9,7 +8,7 @@ import {getProducts} from "./globals.js"
 //showing categories section
 getCategories().then(renderCategories)
 function renderCategories(categories) {
-  console.log('categories',categories)
+  // console.log('categories',categories)
   //sort by products count in descending order
   categories.sort(function (a, b) {
   return Number(b.productCount) - Number(a.productCount);
@@ -42,13 +41,13 @@ function renderCategories(categories) {
 // FEATURED PRODUCTS ------
 getProducts().then(renderFeaturedProducts);
 function renderFeaturedProducts(products) {
-  console.log("products",products)
+  // console.log("products",products)
   // is it featured
   const featuredProducts = [];
   products.forEach((product) => {
    if (product.is_featured) featuredProducts.push(product); 
     });
-  console.log("fP",featuredProducts)
+  // console.log("fP",featuredProducts)
   const container = document.getElementById("featured-products-container");
   let loop = 8;
   if (featuredProducts.length < 9) loop = featuredProducts.length;
@@ -115,7 +114,7 @@ function renderRecentProducts(products) {
   products.forEach((product) => {
     if (product.is_recent) recentProducts.push(product);
   });
-  console.log("rp",recentProducts)
+  // console.log("rp",recentProducts)
   const container = document.getElementById("recent-products-container");
   let loop = 8;
   if (recentProducts.length < 9) loop = recentProducts.length;
@@ -213,4 +212,4 @@ function isFloat(n) {
   return n % 1 !== 0;
 }
 
-console.log('end')
+// console.log('end')
