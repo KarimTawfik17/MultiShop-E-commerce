@@ -26,15 +26,45 @@ export function getUser() {
   return localStorage.getItem("userID");
 }
 
-export function addToFavorites() {
+export function addToFavorites(productId) {
   let favorites = localStorage.getItem("favorites");
-  if (favorites === null) favorites = 0;
-  favorites++;
-  localStorage.setItem("favorites", favorites);
+  if (favorites === null) favorites = "[]";
+  favorites = JSON.parse(favorites);
+  let i = favorites.indexOf(productId);
+  if (i === -1) {
+    favorites.push(productId);
+  }
+  localStorage.setItem("favorites", JSON.stringify(favorites));
 }
 
 export function getFavorites() {
-  return localStorage.getItem("favorites") || 0;
+  let favorites = localStorage.getItem("favorites");
+  if (favorites === null) favorites = "[]";
+  favorites = JSON.parse(favorites);
+  return favorites.length;
 }
+
+export function getCartItemsCount() {
+  let cartItems = localStorage.getItem("Cart");
+  if (cartItems === null) {
+    console.warn("there's no cart data in storage");
+    return 0;
+  }
+  cartItems = JSON.parse(cartItems);
+  return cartItems.length || 0;
+}
+export function addToCart(productID, productName, price) {
+  // to use hussein add to cart here
+  console.log(
+    "Item :",
+    productName,
+    "with id :",
+    productID,
+    "and price :",
+    price,
+    "added to cart!"
+  );
+}
+
 // getCategories().then((data) => console.log(data));
 // getProducts().then((data) => console.log(data));
