@@ -22,10 +22,6 @@ export async function getProducts() {
   return data;
 }
 
-export function getUser() {
-  return localStorage.getItem("userID");
-}
-
 export function addToFavorites(productId) {
   let favorites = localStorage.getItem("favorites");
   if (favorites === null) favorites = "[]";
@@ -66,5 +62,22 @@ export function addToCart(productID, productName, price) {
   );
 }
 
+export function isAuthorized() {
+  if (localStorage.getItem("userID")) return true;
+  return false;
+}
+export function getUserData() {
+  if (!isAuthorized()) {
+    console.warn("trying to get user data without sign-in");
+    return null;
+  }
+  return {
+    userName: localStorage.getItem("userName"),
+    userID: localStorage.getItem("userID"),
+    userToken: localStorage.getItem("token"),
+  };
+}
 // getCategories().then((data) => console.log(data));
 // getProducts().then((data) => console.log(data));
+// console.log(getUserData());
+// console.log(isAuthorized());
