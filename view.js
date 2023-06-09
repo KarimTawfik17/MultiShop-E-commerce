@@ -1,14 +1,15 @@
+const parser = new DOMParser();
+
 export default function renderProducts(products, start = 0, count = 9) {
   const parent = document.getElementById("products");
   parent.innerHTML = "";
   for (let i = start; i < start + count && i < products.length; i++) {
     parent.appendChild(createProductUI(products[i]));
   }
+  renderProductPagination(products.length, start, count);
 }
 
 function createProductUI(product) {
-  const parser = new DOMParser();
-
   let productUIel = parser.parseFromString(
     `
 <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
@@ -113,4 +114,49 @@ function renderRatingStarsEmpty(n) {
 }
 function isFloat(n) {
   return n % 1 !== 0;
+}
+
+function renderProductPagination(totalCount, startEl = 0, countPerPage = 9) {
+  const paginationSection = document.getElementById("pagination");
+  const prev = createPaginationPageBtn("previous");
+  const next = createPaginationPageBtn("next");
+  const currentPage = getCurrentPage(startEl, countPerPage);
+  const totalPages = getTotalPages(totalCount, countPerPage);
+  paginationSection.innerHTML = "";
+  // console.log(currentPage, "current page");
+  // console.log(totalPages, "total pages");
+  if (currentPage == 1) {
+    prev.classList.add("disabled");
+  }
+  if (currentPage == totalPages) {
+    next.classList.add("disabled");
+  }
+  paginationSection.appendChild(prev);
+  if (currentPage > 1) {
+    paginationSection.appendChild(createPaginationPageBtn(currentPage - 1));
+  }
+
+  const current = createPaginationPageBtn(currentPage);
+  current.classList.add("active");
+  paginationSection.appendChild(current);
+
+  if (currentPage < totalPages) {
+    paginationSection.appendChild(createPaginationPageBtn(currentPage + 1));
+  }
+
+  paginationSection.appendChild(next);
+}
+function createPaginationPageBtn(num) {
+  return parser.parseFromString(
+    `<li class="page-item"><a class="page-link" href="#">${num}</a></li>`,
+    "text/html"
+  ).body.firstChild;
+}
+
+function getCurrentPage(startEl, countPerPage) {
+  return Math.floor(startEl / countPerPage) + 1;
+}
+
+function getTotalPages(totalCount, countPerPage) {
+  return Math.ceil(totalCount / countPerPage);
 }
