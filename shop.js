@@ -88,6 +88,7 @@ sizeFilterForm.onchange = filterProducts;
 
 function filterProductByPrice(product, shownPriceRanges) {
   if (shownPriceRanges.includes("all")) return true;
+  if (shownPriceRanges.length == 0) return true; // no price selected to filter
   for (let range of shownPriceRanges) {
     range = +range;
     if (product.price >= range && product.price < range + 100) {
@@ -97,9 +98,11 @@ function filterProductByPrice(product, shownPriceRanges) {
   return false;
 }
 function filterProductByColor(product, shownColors) {
+  if (shownColors.length == 0) return true; // no color selected to filter
   return shownColors.includes("all") || shownColors.includes(product.color);
 }
 function filterProductBySize(product, shownSizes) {
+  if (shownSizes.length == 0) return true; // no size selected to filter
   return shownSizes.includes("all") || shownSizes.includes(product.size);
 }
 
