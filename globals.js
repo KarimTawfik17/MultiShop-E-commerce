@@ -51,7 +51,19 @@ export function getCartItemsCount() {
     return 0;
   }
   cartItems = JSON.parse(cartItems);
-  return cartItems.length;
+  return cartItems.length || 0;
+}
+export function addToCart(productID, productName, price) {
+  // to use hussein add to cart here
+  console.log(
+    "Item :",
+    productName,
+    "with id :",
+    productID,
+    "and price :",
+    price,
+    "added to cart!"
+  );
 }
 
 // getCategories().then((data) => console.log(data));
