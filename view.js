@@ -146,9 +146,9 @@ function renderProductPagination(totalCount, startEl = 0, countPerPage = 9) {
 
   paginationSection.appendChild(next);
 }
-function createPaginationPageBtn(num) {
+function createPaginationPageBtn(page) {
   return parser.parseFromString(
-    `<li class="page-item"><a class="page-link" href="#">${num}</a></li>`,
+    `<li class="page-item"><a data-link=${page} class="page-link" href="#">${page}</a></li>`,
     "text/html"
   ).body.firstChild;
 }

@@ -5,7 +5,7 @@ let productPerPage = 9;
 let allProducts = [];
 let viewedProducts = [];
 function reRender() {
-  //   console.log(viewedProducts[0]);
+  console.log("gonna rerender with :", startProduct, productPerPage);
   renderProducts(viewedProducts, startProduct, productPerPage);
 }
 getProducts().then((products) => {
@@ -44,4 +44,27 @@ document.getElementById("sort-products").onclick = (e) => {
 
   viewedProducts = [...allProducts].sort(sortFn);
   reRender();
+};
+
+document.getElementById("pagination").onclick = (e) => {
+  e.preventDefault();
+  let link = e.target.dataset.link;
+  switch (link) {
+    case undefined:
+      return;
+    case "next":
+      startProduct += productPerPage;
+      reRender();
+      break;
+    case "previous":
+      startProduct -= productPerPage;
+      reRender();
+      break;
+    default:
+      link = +link;
+      if (isNaN(link)) throw new Error("unexpected link : ", link);
+      startProduct = productPerPage * (link - 1);
+      reRender();
+  }
+  console.log(link);
 };
