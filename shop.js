@@ -59,7 +59,6 @@ document.getElementById("sort-products").onclick = (e) => {
   reRender();
 };
 
-<<<<<<< HEAD
 document.getElementById("pagination").onclick = (e) => {
   e.preventDefault();
   let link = e.target.dataset.link;
@@ -82,7 +81,6 @@ document.getElementById("pagination").onclick = (e) => {
   }
   console.log(link);
 };
-=======
 const priceFilterForm = document.getElementById("price-filter");
 priceFilterForm.onchange = filterProducts;
 const colorFilterForm = document.getElementById("color-filter");
@@ -120,4 +118,3 @@ function filterProducts() {
   reRender();
   // console.log(shownPriceRanges, shownColors, shownSizes);
 }
->>>>>>> filtering_by
