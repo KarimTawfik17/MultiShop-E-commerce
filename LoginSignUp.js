@@ -55,7 +55,7 @@ const sendLogReq = async function (email, password) {
 };
 //after finding user under credentials provided we save userID and token in local storage and let the customer in our app
 const signIn = function (user) {
-  localStorage.setItem("userID", user.id);
+  localStorage.setItem("userID", user._id);
   localStorage.setItem("token", user.token);
   localStorage.setItem("userName", user.first_name);
   if (!localStorage.getItem("Cart")) {
