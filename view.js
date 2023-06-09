@@ -35,11 +35,10 @@ function createProductUI(product) {
         ${product.name}
       </a>
       <div class="d-flex align-items-center justify-content-center mt-2">
-        <h5>$${(product.price - product.price * product.discount).toFixed(
-          2
-        )}</h5>
+        <h5>$${product.price.toFixed(2)}
+        </h5>
         <h6 class="text-muted ml-2">
-          <del>$${product.price.toFixed(2)}
+          <del>$${(product.price + product.price * product.discount).toFixed(2)}
           </del>
         </h6>
       </div>
@@ -91,7 +90,7 @@ function renderRatings(rating) {
   let ratingSection = ``;
   ratingSection += renderRatingStarsFull(solid);
   if (half) {
-    ratingSection += `<small class="fa fa-star text-primary mr-1"></small>`; // to be edited to half rating
+    ratingSection += `<small class="fa fa-star-half-alt text-primary mr-1"></small>`; // to be edited to half rating
   }
   ratingSection += renderRatingStarsEmpty(empty);
   return ratingSection;
