@@ -91,7 +91,7 @@ function renderRatings(rating) {
   let ratingSection = ``;
   ratingSection += renderRatingStarsFull(solid);
   if (half) {
-    ratingSection += `<small class="fa fa-star-half-alt text-primary mr-1"></small>`; // to be edited to half rating
+    ratingSection += `<small class="fa fa-star-half-alt text-primary mr-1"></small>`;
   }
   ratingSection += renderRatingStarsEmpty(empty);
   return ratingSection;

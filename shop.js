@@ -16,8 +16,6 @@ function cleanData(products) {
   }));
 }
 function reRender() {
-  // console.log("gonna rerender with :", startProduct, productPerPage);
-  // console.log(viewedProducts[0]);
   renderProducts(viewedProducts, startProduct, productPerPage);
 }
 getProducts().then((products) => {
@@ -79,7 +77,6 @@ document.getElementById("pagination").onclick = (e) => {
       startProduct = productPerPage * (link - 1);
       reRender();
   }
-  console.log(link);
 };
 const priceFilterForm = document.getElementById("price-filter");
 priceFilterForm.onchange = filterProducts;
@@ -116,5 +113,4 @@ function filterProducts() {
       filterProductBySize(product, shownSizes)
   );
   reRender();
-  // console.log(shownPriceRanges, shownColors, shownSizes);
 }
