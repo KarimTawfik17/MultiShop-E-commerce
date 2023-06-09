@@ -1,6 +1,6 @@
 //Hussein
 //User Class that has all User data.
-import { Cart } from "./Cart";
+import { Cart } from "./Cart.js";
 class User {
   id;
   firstName;
@@ -57,6 +57,7 @@ const sendLogReq = async function (email, password) {
 const signIn = function (user) {
   localStorage.setItem("userID", user.id);
   localStorage.setItem("token", user.token);
+  localStorage.setItem("userName", user.first_name);
   if (!localStorage.getItem("Cart")) {
     const cart = new Cart();
     localStorage.setItem("Cart", "");
