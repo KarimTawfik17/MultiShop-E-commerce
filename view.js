@@ -1,3 +1,5 @@
+import { addToCart, addToFavorites } from "./globals.js";
+
 const parser = new DOMParser();
 
 export default function renderProducts(products, start = 0, count = 9) {
@@ -63,11 +65,12 @@ function addHandersToProductUI(product, productUIel) {
   const heartBtn = productUIel.querySelector('[data-action="heart"');
   cartBtn.onclick = (e) => {
     e.preventDefault();
-    console.log(product._id, "added to cart"); // add to cart logic here
+    addToCart(product._id, product.name, product.price);
   };
   heartBtn.onclick = (e) => {
     e.preventDefault();
-    console.log(product._id, "added to favorites"); // favorite logic here
+    addToFavorites(product._id);
+    // console.log(product._id, "added to favorites"); // favorite logic here
   };
 }
 
