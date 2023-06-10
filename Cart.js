@@ -1,3 +1,5 @@
+import { renderCartCount } from "./header.js";
+
 class CartItem {
   productID;
   productName;
@@ -75,6 +77,7 @@ class Cart {
   save() {
     localStorage.setItem("Cart", JSON.stringify(this.cartItems));
     localStorage.setItem("Subtotal", this.getSubTotal());
+    renderCartCount();
   }
 }
 
