@@ -58,10 +58,6 @@ const signIn = function (user) {
   localStorage.setItem("userID", user._id);
   localStorage.setItem("token", user.token);
   localStorage.setItem("userName", user.first_name);
-  if (!localStorage.getItem("Cart")) {
-    const cart = new Cart();
-    localStorage.setItem("Cart", "[]");
-  }
   window.location.href = "/";
 };
 //register function takes customer input and turn it into an object and send it to API after validating.
