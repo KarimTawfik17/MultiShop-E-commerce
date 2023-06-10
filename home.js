@@ -1,6 +1,6 @@
 "use strict";
 
-import { addToFavorites, getCategories } from "./globals.js";
+import { addToCart, addToFavorites, getCategories } from "./globals.js";
 import { getProducts } from "./globals.js";
 
 //CATEGORIES ------
@@ -114,7 +114,7 @@ function renderFeaturedProducts(products) {
   }
   function addToCartFeatured() {
     let i = this.getAttribute("Fnumber");
-    console.log("cart", featuredProducts[i]);
+    addToCart(featuredProducts[i]);
   }
   //fav
   for (let i = 0; i < loop; i++) {
@@ -202,7 +202,7 @@ function renderRecentProducts(products) {
   }
   function addToCartRecent() {
     let i = this.getAttribute("Rnumber");
-    console.log("cart", recentProducts[i]);
+    addToCart(recentProducts[i]);
   }
   //fav
   for (let i = 0; i < loop; i++) {
