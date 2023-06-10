@@ -1,6 +1,5 @@
 //Hussein
 //User Class that has all User data.
-import { Cart } from "./Cart.js";
 class User {
   id;
   firstName;
@@ -90,6 +89,7 @@ const login = function (email, password) {
 const logout = function () {
   localStorage.removeItem("userID");
   localStorage.removeItem("token");
+  localStorage.removeItem("userName");
 };
 
 export { register, login, logout };

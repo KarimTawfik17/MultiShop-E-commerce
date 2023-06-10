@@ -1,3 +1,4 @@
+import { logout } from "./LoginSignUp.js";
 import {
   getCartItemsCount,
   getCategories,
@@ -42,7 +43,10 @@ export function renderNav() {
     };
     signout.onclick = (e) => {
       e.preventDefault();
-      console.log("am out");
+      logout();
+      window.location.href = "/";
+
+      // console.log("am out");
     };
     navParent.appendChild(signout);
   } else {
