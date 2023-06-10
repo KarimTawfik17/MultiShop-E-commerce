@@ -67,12 +67,10 @@ function addHandersToProductUI(product, productUIel) {
   cartBtn.onclick = (e) => {
     e.preventDefault();
     addToCart(product);
-    renderCartCount();
   };
   heartBtn.onclick = (e) => {
     e.preventDefault();
     addToFavorites(product._id);
-    // console.log(product._id, "added to favorites"); // favorite logic here
   };
 }
 
