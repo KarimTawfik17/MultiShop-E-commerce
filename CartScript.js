@@ -1,5 +1,11 @@
 import { Cart } from "./Cart.js";
-
+document.querySelector(".checkout").addEventListener("click", () => {
+  if (localStorage.getItem("token")) {
+    window.location.href = "checkout.html";
+  } else {
+    window.location.href = "login.html";
+  }
+});
 document.addEventListener("DOMContentLoaded", () => {
   const cart = new Cart(JSON.parse(localStorage.getItem("Cart")));
   renderPageUI(cart);
