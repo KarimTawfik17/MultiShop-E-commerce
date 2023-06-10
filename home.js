@@ -60,16 +60,15 @@ function renderFeaturedProducts(products) {
         <img class="img-fluid w-100" src="${featuredProducts[i].image}" alt="" />
         <div class="product-action">
           <a
+            Fnumber="${i}"
+            id ="F-cart-btn-${i}"
             class="btn btn-outline-dark btn-square"
-            href="#"
-            onclick="addSingleProductToCart({
-              id:${featuredProducts[i]._id}
-              ,name:${featuredProducts[i].name}
-              ,price:${featuredProducts[i].price}
-              ,image:${featuredProducts[i].image}
-            })"><i class="fa fa-shopping-cart"></i
+            href="#"><i class="fa fa-shopping-cart"></i
           ></a>
-          <a class="btn btn-outline-dark btn-square" href="#"
+          <a 
+            Fnumber="${i}"
+            id ="F-fav-btn-${i}"
+            class="btn btn-outline-dark btn-square" href="#"
             ><i class="far fa-heart"></i
           ></a>
           <a class="btn btn-outline-dark btn-square" href="#"
@@ -104,6 +103,25 @@ function renderFeaturedProducts(products) {
   </div>
 `;
   }
+  //adding events for items
+  //cart
+  for (let i=0; i<loop; i++){
+    let cartBtn = document.getElementById(`F-cart-btn-${i}`)
+    cartBtn.addEventListener('click',addToCartFeatured)
+  }
+  function addToCartFeatured(){
+    let i = this.getAttribute("Fnumber")
+    console.log("cart",featuredProducts[i])
+  }
+  //fav
+  for (let i=0; i<loop; i++){
+    let cartBtn = document.getElementById(`F-fav-btn-${i}`)
+    cartBtn.addEventListener('click',addtoFavFeatured)
+  }
+  function addtoFavFeatured(){
+    let i = this.getAttribute("Fnumber")
+    console.log("fav",featuredProducts[i])
+  }
 };
 
 // RECENT PRODUCTS ------
@@ -126,10 +144,16 @@ function renderRecentProducts(products) {
         <div class="product-img position-relative overflow-hidden">
             <img class="img-fluid w-100" src="${recentProducts[i].image}" alt="" />
             <div class="product-action">
-              <a class="btn btn-outline-dark btn-square" href=""
+              <a 
+                  Rnumber ="${i}"
+                  id ="R-cart-btn-${i}"
+                  class="btn btn-outline-dark btn-square" href=""
                   ><i class="fa fa-shopping-cart"></i
                 ></a>
-                <a class="btn btn-outline-dark btn-square" href=""
+                <a 
+                  Rnumber ="${i}"
+                  id ="R-fav-btn-${i}"
+                  class="btn btn-outline-dark btn-square" href=""
                   ><i class="far fa-heart"></i
                 ></a>
                 <a class="btn btn-outline-dark btn-square" href=""
@@ -162,7 +186,27 @@ function renderRecentProducts(products) {
           </div>
         </div>`;
   }
+  //adding events for items
+  //cart
+  for (let i=0; i<loop; i++){
+    let cartBtn = document.getElementById(`R-cart-btn-${i}`)
+    cartBtn.addEventListener('click',addToCartRecent)
+  }
+  function addToCartRecent(){
+    let i = this.getAttribute("Rnumber")
+    console.log("cart",recentProducts[i])
+  }
+  //fav
+  for (let i=0; i<loop; i++){
+    let cartBtn = document.getElementById(`R-fav-btn-${i}`)
+    cartBtn.addEventListener('click',addtoFavRecent)
+  }
+  function addtoFavRecent(){
+    let i = this.getAttribute("Rnumber")
+    console.log("fav",recentProducts[i])
+  }
 }
+
 
 
 
