@@ -1,23 +1,22 @@
-'use strict'
+"use strict";
 
-import {getCategories} from "./globals.js"
-import {getProducts} from "./globals.js"
-
+import { addToFavorites, getCategories } from "./globals.js";
+import { getProducts } from "./globals.js";
 
 //CATEGORIES ------
 //showing categories section
-getCategories().then(renderCategories)
+getCategories().then(renderCategories);
 function renderCategories(categories) {
   // console.log('categories',categories)
   //sort by products count in descending order
   categories.sort(function (a, b) {
-  return Number(b.productCount) - Number(a.productCount);
+    return Number(b.productCount) - Number(a.productCount);
   });
   const container = document.getElementById("categories-container");
   //showing top 4
   let loop = 4;
   if (categories.length < 4) loop = categories.length;
-  for (let i = 0; i < (loop); i++) {
+  for (let i = 0; i < loop; i++) {
     container.innerHTML += `
 <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
   <a class="text-decoration-none" href="">
@@ -34,7 +33,7 @@ function renderCategories(categories) {
 </div>
 `;
   }
-};
+}
 
 // // PRODUCTS ------
 
@@ -45,19 +44,21 @@ function renderFeaturedProducts(products) {
   // is it featured
   const featuredProducts = [];
   products.forEach((product) => {
-   if (product.is_featured) featuredProducts.push(product); 
-    });
+    if (product.is_featured) featuredProducts.push(product);
+  });
   // console.log("fP",featuredProducts)
   const container = document.getElementById("featured-products-container");
   let loop = 8;
   if (featuredProducts.length < 9) loop = featuredProducts.length;
   //showing 8 featured products
-  for (let i = 0; i < (loop); i++) {
+  for (let i = 0; i < loop; i++) {
     container.innerHTML += `
     <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
     <div class="product-item bg-light mb-4">
       <div class="product-img position-relative overflow-hidden">
-        <img class="img-fluid w-100" src="${featuredProducts[i].image}" alt="" />
+        <img class="img-fluid w-100" src="${
+          featuredProducts[i].image
+        }" alt="" />
         <div class="product-action">
           <a
             Fnumber="${i}"
@@ -86,11 +87,13 @@ function renderFeaturedProducts(products) {
         <div
           class="d-flex align-items-center justify-content-center mt-2"
         >
-          <h5>$${featuredProducts[i].price *
-      (1 - featuredProducts[i].discount).toFixed(2)
-      }</h5>
-          <h6 class="text-muted ml-2"><del>$${featuredProducts[i].price
-      }</del></h6>
+          <h5>$${
+            featuredProducts[i].price *
+            (1 - featuredProducts[i].discount).toFixed(2)
+          }</h5>
+          <h6 class="text-muted ml-2"><del>$${
+            featuredProducts[i].price
+          }</del></h6>
         </div>
         <div
           class="d-flex align-items-center justify-content-center mb-1"
@@ -105,24 +108,24 @@ function renderFeaturedProducts(products) {
   }
   //adding events for items
   //cart
-  for (let i=0; i<loop; i++){
-    let cartBtn = document.getElementById(`F-cart-btn-${i}`)
-    cartBtn.addEventListener('click',addToCartFeatured)
+  for (let i = 0; i < loop; i++) {
+    let cartBtn = document.getElementById(`F-cart-btn-${i}`);
+    cartBtn.addEventListener("click", addToCartFeatured);
   }
-  function addToCartFeatured(){
-    let i = this.getAttribute("Fnumber")
-    console.log("cart",featuredProducts[i])
+  function addToCartFeatured() {
+    let i = this.getAttribute("Fnumber");
+    console.log("cart", featuredProducts[i]);
   }
   //fav
-  for (let i=0; i<loop; i++){
-    let cartBtn = document.getElementById(`F-fav-btn-${i}`)
-    cartBtn.addEventListener('click',addtoFavFeatured)
+  for (let i = 0; i < loop; i++) {
+    let cartBtn = document.getElementById(`F-fav-btn-${i}`);
+    cartBtn.addEventListener("click", addtoFavFeatured);
   }
-  function addtoFavFeatured(){
-    let i = this.getAttribute("Fnumber")
-    console.log("fav",featuredProducts[i])
+  function addtoFavFeatured() {
+    let i = this.getAttribute("Fnumber");
+    addToFavorites(featuredProducts[i]._id);
   }
-};
+}
 
 // RECENT PRODUCTS ------
 getProducts().then(renderRecentProducts);
@@ -137,12 +140,14 @@ function renderRecentProducts(products) {
   let loop = 8;
   if (recentProducts.length < 9) loop = recentProducts.length;
   //showing 8 recent products
-  for (let i = 0; i < (loop); i++) {
+  for (let i = 0; i < loop; i++) {
     container.innerHTML += `
     <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
       <div class="product-item bg-light mb-4">
         <div class="product-img position-relative overflow-hidden">
-            <img class="img-fluid w-100" src="${recentProducts[i].image}" alt="" />
+            <img class="img-fluid w-100" src="${
+              recentProducts[i].image
+            }" alt="" />
             <div class="product-action">
               <a 
                   Rnumber ="${i}"
@@ -171,10 +176,13 @@ function renderRecentProducts(products) {
               <div
                 class="d-flex align-items-center justify-content-center mt-2"
               >
-                <h5>$${recentProducts[i].price * (1 - recentProducts[i].discount).toFixed(2)
-      }</h5>
-                <h6 class="text-muted ml-2"><del>$${recentProducts[i].price
-      }</del></h6>
+                <h5>$${
+                  recentProducts[i].price *
+                  (1 - recentProducts[i].discount).toFixed(2)
+                }</h5>
+                <h6 class="text-muted ml-2"><del>$${
+                  recentProducts[i].price
+                }</del></h6>
               </div>
               <div
                 class="d-flex align-items-center justify-content-center mb-1"
@@ -188,28 +196,24 @@ function renderRecentProducts(products) {
   }
   //adding events for items
   //cart
-  for (let i=0; i<loop; i++){
-    let cartBtn = document.getElementById(`R-cart-btn-${i}`)
-    cartBtn.addEventListener('click',addToCartRecent)
+  for (let i = 0; i < loop; i++) {
+    let cartBtn = document.getElementById(`R-cart-btn-${i}`);
+    cartBtn.addEventListener("click", addToCartRecent);
   }
-  function addToCartRecent(){
-    let i = this.getAttribute("Rnumber")
-    console.log("cart",recentProducts[i])
+  function addToCartRecent() {
+    let i = this.getAttribute("Rnumber");
+    console.log("cart", recentProducts[i]);
   }
   //fav
-  for (let i=0; i<loop; i++){
-    let cartBtn = document.getElementById(`R-fav-btn-${i}`)
-    cartBtn.addEventListener('click',addtoFavRecent)
+  for (let i = 0; i < loop; i++) {
+    let cartBtn = document.getElementById(`R-fav-btn-${i}`);
+    cartBtn.addEventListener("click", addtoFavRecent);
   }
-  function addtoFavRecent(){
-    let i = this.getAttribute("Rnumber")
-    console.log("fav",recentProducts[i])
+  function addtoFavRecent() {
+    let i = this.getAttribute("Rnumber");
+    addToFavorites(recentProducts[i]._id);
   }
 }
-
-
-
-
 
 //rendering stars
 function renderRatings(rating) {
