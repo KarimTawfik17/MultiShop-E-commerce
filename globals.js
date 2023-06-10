@@ -1,3 +1,4 @@
+import { Cart, CartItem } from "./Cart.js";
 export async function getCategories() {
   const cachedCategories = localStorage.getItem("categories");
   if (cachedCategories) {
@@ -49,19 +50,22 @@ export function getCartItemsCount() {
   cartItems = JSON.parse(cartItems);
   return cartItems.length || 0;
 }
-export function addToCart(productID, productName, price) {
-  // to use hussein add to cart here
-  console.log(
-    "Item :",
-    productName,
-    "with id :",
-    productID,
-    "and price :",
-    price,
-    "added to cart!"
-  );
+export function addToCart(productID, productName, price, image) {
+  const cart = new Cart(JSON.parse(localStorage.getItem("Cart")));
+  const item = new CartItem(productID, productName, price, image);
+  cart.addToCart(item);
 }
-
+export function getCartItems() {
+  const cart = new Cart(JSON.parse(localStorage.getItem("Cart")));
+  return cart.cartItems;
+}
+export function getSubTotal() {
+  const cart = new Cart(JSON.parse(localStorage.getItem("Cart")));
+  return cart.getSubTotal();
+}
+window.addToCart = addToCart;
+window.getCartItems = getCartItems;
+window.getSubTotal = getSubTotal;
 export function isAuthorized() {
   if (localStorage.getItem("userID")) return true;
   return false;

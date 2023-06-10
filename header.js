@@ -61,8 +61,8 @@ export function renderNav() {
 renderNav();
 
 function createCart() {
-  // console.log("creating cart");
   if (!localStorage.getItem("Cart")) {
+    console.log("brand new cart created !");
     localStorage.setItem("Cart", "[]");
   }
 }

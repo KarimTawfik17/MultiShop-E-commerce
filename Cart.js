@@ -42,6 +42,7 @@ class Cart {
     }
   }
   addToCart(cartItem) {
+    console.log("cart item : ", cartItem);
     const myCartItem = this.cartItems.find(
       ({ productID }) => productID === cartItem.productID
     );

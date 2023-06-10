@@ -8,10 +8,10 @@ document.querySelector(".checkout").addEventListener("click", () => {
 });
 document.addEventListener("DOMContentLoaded", () => {
   const cart = new Cart(JSON.parse(localStorage.getItem("Cart")));
-  renderPageUI(cart);
   if (cart.cartItems.length > 0) {
     addListeners(cart);
   }
+  renderPageUI(cart);
 });
 
 const addListeners = function (cart) {
@@ -31,9 +31,7 @@ const addListeners = function (cart) {
 };
 
 const manageCartItem = function (cart, action, id) {
-  const myCartItem = cart.cartItems.find(
-    ({ productID }) => productID === Number(id)
-  );
+  const myCartItem = cart.cartItems.find(({ productID }) => productID === id);
   if (action === "increment") {
     cart.addToCart(myCartItem);
   } else if (action === "decrement") {
