@@ -74,18 +74,20 @@ const register = function (firstName, lastName, email, password) {
         user.token = savedUser.token;
         signIn(user);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => alert(error));
   } else {
-    console.error("Please Enter Valid Data");
+    alert("Please Enter Valid Data");
   }
 };
 
 //login function takes customer input and send it to API after validating to find the user and let him in.
 const login = function (email, password) {
   if (validateEmail(email, password)) {
-    sendLogReq(email, password).then((user) => {
-      signIn(user);
-    });
+    sendLogReq(email, password)
+      .then((user) => {
+        signIn(user);
+      })
+      .catch((error) => alert("Invalid Credentials"));
   }
 };
 //erasing login info from local storage
