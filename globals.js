@@ -1,4 +1,5 @@
 import { Cart, CartItem } from "./Cart.js";
+import { renderFavoritesCount } from "./header.js";
 export async function getCategories() {
   const cachedCategories = localStorage.getItem("categories");
   if (cachedCategories) {
@@ -32,6 +33,7 @@ export function addToFavorites(productId) {
     favorites.push(productId);
   }
   localStorage.setItem("favorites", JSON.stringify(favorites));
+  renderFavoritesCount();
 }
 
 export function getFavorites() {
@@ -50,7 +52,7 @@ export function getCartItemsCount() {
   cartItems = JSON.parse(cartItems);
   return cartItems.length || 0;
 }
-export function addToCart(productID, productName, price, image) {
+export function addToCart({ _id: productID, name: productName, price, image }) {
   const cart = new Cart(JSON.parse(localStorage.getItem("Cart")));
   const item = new CartItem(productID, productName, price, image);
   cart.addToCart(item);

@@ -1,4 +1,5 @@
 import { addToCart, addToFavorites } from "./globals.js";
+import { renderCartCount } from "./header.js";
 
 const parser = new DOMParser();
 
@@ -65,7 +66,8 @@ function addHandersToProductUI(product, productUIel) {
   const heartBtn = productUIel.querySelector('[data-action="heart"');
   cartBtn.onclick = (e) => {
     e.preventDefault();
-    addToCart(product._id, product.name, product.price);
+    addToCart(product);
+    renderCartCount();
   };
   heartBtn.onclick = (e) => {
     e.preventDefault();
