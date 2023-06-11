@@ -30,23 +30,17 @@ export function renderCartCount() {
 }
 renderCartCount();
 
-export function renderNav() {
+function renderNav() {
   const navParent = document.getElementById("nav");
   if (isAuthorized()) {
     let signout = document.createElement("a");
     signout.innerText = "Sign Out";
     signout.classList.add("nav-item", "nav-link");
     signout.href = "";
-    signout.onclick = () => {
-      // to add sign ou logic here
-      console.log("am signed out");
-    };
     signout.onclick = (e) => {
       e.preventDefault();
       logout();
       window.location.href = "/";
-
-      // console.log("am out");
     };
     navParent.appendChild(signout);
   } else {
@@ -71,8 +65,11 @@ createCart();
 document.addEventListener("DOMContentLoaded", () => {
   let name = localStorage.getItem("userName");
   if (name) {
-    document.querySelector(
-      "#navbarCollapse"
-    ).innerHTML += `<div id="username" style="color:white;margin:5px;">Hi, ${name}</div>`;
+    document
+      .querySelector("#navbarCollapse")
+      .insertAdjacentHTML(
+        "beforeend",
+        `<div id="username" style="color:white;margin:5px;">Hi, ${name}</div>`
+      );
   }
 });
