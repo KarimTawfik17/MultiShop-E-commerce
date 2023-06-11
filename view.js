@@ -1,5 +1,4 @@
 import { addToCart, addToFavorites } from "./globals.js";
-import { renderCartCount } from "./header.js";
 
 const parser = new DOMParser();
 

@@ -1,9 +1,13 @@
 import {
   getCartItems,
   getUserData,
+  isAuthorized,
   getSubTotal as subtotal,
 } from "../globals.js";
 
+if (!isAuthorized()) {
+  window.location.href = "/login.html";
+}
 let tax = 0.1;
 
 function getCartProducts() {
@@ -57,7 +61,6 @@ function calculateTax(paymentMethods) {
 }
 
 function validateShippingAddress(firstName, lastName, email, addressLine) {
-  console.log(firstName, lastName, email, addressLine);
   return (
     firstName.trim() === "" ||
     lastName.trim() === "" ||
@@ -138,15 +141,12 @@ function placeOrder() {
 
 document.addEventListener("DOMContentLoaded", () => {
   const products = getCartProducts();
-  console.log(products);
   displayCartLines(products);
 
   const SubTotal = getSubTotal();
-  console.log(SubTotal);
   displaySubTotal(SubTotal);
 
   const total = getTotal();
-  console.log(total);
   displayTotal(total);
 });
 const placeOrderButton = document.getElementById("place-order-button");
@@ -156,7 +156,6 @@ Radioo.addEventListener("change", function (e) {
   const taxType = e.target.id;
   const taxRate = calculateTax(taxType);
   displayTaxRate(taxRate);
-  console.log(taxType, taxRate);
   const total = getTotal();
   displayTotal(total);
 });
