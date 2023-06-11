@@ -112,7 +112,8 @@ function renderFeaturedProducts(products) {
     let cartBtn = document.getElementById(`F-cart-btn-${i}`);
     cartBtn.addEventListener("click", addToCartFeatured);
   }
-  function addToCartFeatured() {
+  function addToCartFeatured(e) {
+    e.preventDefault();
     let i = this.getAttribute("Fnumber");
     addToCart(featuredProducts[i]);
   }
@@ -121,7 +122,8 @@ function renderFeaturedProducts(products) {
     let cartBtn = document.getElementById(`F-fav-btn-${i}`);
     cartBtn.addEventListener("click", addtoFavFeatured);
   }
-  function addtoFavFeatured() {
+  function addtoFavFeatured(e) {
+    e.preventDefault();
     let i = this.getAttribute("Fnumber");
     addToFavorites(featuredProducts[i]._id);
   }
@@ -200,7 +202,8 @@ function renderRecentProducts(products) {
     let cartBtn = document.getElementById(`R-cart-btn-${i}`);
     cartBtn.addEventListener("click", addToCartRecent);
   }
-  function addToCartRecent() {
+  function addToCartRecent(e) {
+    e.preventDefault();
     let i = this.getAttribute("Rnumber");
     addToCart(recentProducts[i]);
   }
@@ -209,7 +212,8 @@ function renderRecentProducts(products) {
     let cartBtn = document.getElementById(`R-fav-btn-${i}`);
     cartBtn.addEventListener("click", addtoFavRecent);
   }
-  function addtoFavRecent() {
+  function addtoFavRecent(e) {
+    e.preventDefault();
     let i = this.getAttribute("Rnumber");
     addToFavorites(recentProducts[i]._id);
   }
