@@ -67,3 +67,12 @@ function createCart() {
   }
 }
 createCart();
+
+document.addEventListener("DOMContentLoaded", () => {
+  let name = localStorage.getItem("userName");
+  if (name) {
+    document.querySelector(
+      "#navbarCollapse"
+    ).innerHTML += `<div id="username" style="color:white;margin:5px;">Hi, ${name}</div>`;
+  }
+});
