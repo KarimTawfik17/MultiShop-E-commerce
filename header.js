@@ -16,7 +16,7 @@ function displayCategories(categories) {
 }
 
 function createCategoryItem(category) {
-  return `<a href="" class="nav-item nav-link">${category.name}</a>`;
+  return `<a style="background-color:#e6b400; text-transform:Capitalize; font-weight:bold" href="" class="nav-item nav-link">${category.name}</a>`;
 }
 
 // render favorites count
