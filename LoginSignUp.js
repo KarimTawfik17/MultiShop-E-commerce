@@ -14,6 +14,7 @@ class User {
     this.password = password;
   }
 }
+
 // validating email
 const validateEmail = function (email) {
   return /\S+@\S+\.\S+/.test(email);
@@ -77,12 +78,14 @@ const register = function (firstName, lastName, email, password) {
 
 //login function takes customer input and send it to API after validating to find the user and let him in.
 const login = function (email, password) {
-  if (validateEmail(email, password)) {
+  if (validateEmail(email)) {
     sendLogReq(email, password)
       .then((user) => {
         signIn(user);
       })
       .catch((error) => alert("Invalid Credentials"));
+  } else {
+    alert("This is a valid email format");
   }
 };
 //erasing login info from local storage

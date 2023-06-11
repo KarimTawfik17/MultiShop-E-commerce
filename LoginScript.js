@@ -5,3 +5,9 @@ document.querySelector("#login").addEventListener("click", () => {
   const password = document.querySelector("#password").value;
   userFunctions.login(email, password);
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (localStorage.getItem("token")) {
+    window.location.href = "/";
+  }
+});

@@ -7,3 +7,9 @@ document.querySelector("#register").addEventListener("click", () => {
   const password = document.querySelector("#password").value;
   userFunctions.register(firstName, lastName, email, password);
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (localStorage.getItem("token")) {
+    window.location.href = "/";
+  }
+});
