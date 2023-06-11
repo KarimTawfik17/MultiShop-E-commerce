@@ -58,6 +58,7 @@ class Cart {
     const myCartItem = this.cartItems.find(
       ({ productID }) => productID === cartItem.productID
     );
+
     if (myCartItem.quantity > 1) {
       myCartItem.decrementQuantity();
     } else {

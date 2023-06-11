@@ -75,7 +75,9 @@ const renderPageUI = function (cart) {
         </td>
         <td class="align-middle">${item.getTotalPrice()}</td>
         <td class="align-middle">
-            <button class="btn btn-sm btn-danger" type="button">
+            <button class="btn btn-sm btn-danger" id="delete ${
+              item.productID
+            }" type="button">
                 <i class="fa fa-times"></i>
             </button>
         </td>
