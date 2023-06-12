@@ -26,6 +26,28 @@ function displayCartLines(products) {
     cartLinesContainer.insertAdjacentHTML("beforeend", createCartLine(product));
   });
 }
+function displayMessage() {
+  const firstName = getUserData().userName;
+  let messageContainer = document.getElementById("messageContainer");
+  messageContainer.innerHTML = `${firstName} thank you for your order!`;
+}
+
+function clearFormAndCart() {
+  document.getElementById("first-name").value = "";
+  document.getElementById("last-name").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("mobile-number").value = "";
+  document.getElementById("address1").value = "";
+  document.getElementById("address2").value = "";
+  document.getElementById("country").value = "";
+  document.getElementById("city").value = "";
+  document.getElementById("state").value = "";
+  document.getElementById("zip-code").value = "";
+  localStorage.setItem("Cart",'[]');
+  setTimeout(() => {
+    window.location.href = "/index.html";
+  }, 1000);
+}
 
 function getSubTotal() {
   return subtotal();
@@ -132,6 +154,9 @@ function placeOrder() {
     .then((response) => response.json())
     .then((data) => {
       console.log("Response:", data);
+      clearFormAndCart();
+      displayMessage();
+      
     })
     .catch((error) => {
       alert("error happened check console");
