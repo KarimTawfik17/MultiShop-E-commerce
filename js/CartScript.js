@@ -1,9 +1,13 @@
 import { Cart } from "./Cart.js";
 document.querySelector(".checkout").addEventListener("click", () => {
-  if (localStorage.getItem("token")) {
-    window.location.href = "checkout.html";
+  if (JSON.parse(localStorage.getItem("Cart")).length) {
+    if (localStorage.getItem("token")) {
+      window.location.href = "checkout.html";
+    } else {
+      window.location.href = "login.html";
+    }
   } else {
-    window.location.href = "login.html";
+    alert("You Don't have any Items in your Cart!");
   }
 });
 document.addEventListener("DOMContentLoaded", () => {
