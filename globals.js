@@ -1,3 +1,6 @@
+import { Cart, CartItem } from "./Cart.js";
+import { renderFavoritesCount } from "./header.js";
+import { creteToast } from "./toast.js";
 export async function getCategories() {
   const cachedCategories = localStorage.getItem("categories");
   if (cachedCategories) {
@@ -29,8 +32,10 @@ export function addToFavorites(productId) {
   let i = favorites.indexOf(productId);
   if (i === -1) {
     favorites.push(productId);
+    creteToast("Favorites", "Item Added To Favorites", "star.png");
   }
   localStorage.setItem("favorites", JSON.stringify(favorites));
+  renderFavoritesCount();
 }
 
 export function getFavorites() {
@@ -49,19 +54,23 @@ export function getCartItemsCount() {
   cartItems = JSON.parse(cartItems);
   return cartItems.length || 0;
 }
-export function addToCart(productID, productName, price) {
-  // to use hussein add to cart here
-  console.log(
-    "Item :",
-    productName,
-    "with id :",
-    productID,
-    "and price :",
-    price,
-    "added to cart!"
-  );
+export function addToCart({ _id: productID, name: productName, price, image }) {
+  const cart = new Cart(JSON.parse(localStorage.getItem("Cart")));
+  const item = new CartItem(productID, productName, price, image);
+  cart.addToCart(item);
+  creteToast("Cart", "Item Added To Cart", "shopping-cart.png");
 }
-
+export function getCartItems() {
+  const cart = new Cart(JSON.parse(localStorage.getItem("Cart")));
+  return cart.cartItems;
+}
+export function getSubTotal() {
+  const cart = new Cart(JSON.parse(localStorage.getItem("Cart")));
+  return cart.getSubTotal();
+}
+window.addToCart = addToCart;
+window.getCartItems = getCartItems;
+window.getSubTotal = getSubTotal;
 export function isAuthorized() {
   if (localStorage.getItem("userID")) return true;
   return false;

@@ -9710,3 +9710,9 @@ a.text-dark:hover, a.text-dark:focus {
     transform: translateY(-15px);
   }
 }
+#messageContainer{
+  padding: 0px 10px;
+  color: white;
+  font-size: large;
+  background-color: #1c7430;
+}
