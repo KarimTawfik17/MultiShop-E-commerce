@@ -4,6 +4,7 @@ import {
   isAuthorized,
   getSubTotal as subtotal,
 } from "../globals.js";
+import { creteToast } from "../toast.js";
 
 if (!isAuthorized()) {
   window.location.href = "/login.html";
@@ -28,6 +29,11 @@ function displayCartLines(products) {
 }
 function displayMessage() {
   const firstName = getUserData().userName;
+  creteToast(
+    "Order",
+    `${firstName} added order successfully.`,
+    "order-now.png"
+  );
   let messageContainer = document.getElementById("messageContainer");
   messageContainer.innerHTML = `${firstName} thank you for your order!`;
 }
@@ -43,7 +49,7 @@ function clearFormAndCart() {
   document.getElementById("city").value = "";
   document.getElementById("state").value = "";
   document.getElementById("zip-code").value = "";
-  localStorage.setItem("Cart",'[]');
+  localStorage.setItem("Cart", "[]");
   setTimeout(() => {
     window.location.href = "/index.html";
   }, 1000);
@@ -156,7 +162,6 @@ function placeOrder() {
       console.log("Response:", data);
       clearFormAndCart();
       displayMessage();
-      
     })
     .catch((error) => {
       alert("error happened check console");
