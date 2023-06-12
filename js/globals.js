@@ -32,7 +32,7 @@ export function addToFavorites(productId) {
   let i = favorites.indexOf(productId);
   if (i === -1) {
     favorites.push(productId);
-    creteToast("Favorites", "Item Added To Favorites", "star.png");
+    creteToast("Favorites", "Item Added To Favorites", "img/star.png");
   }
   localStorage.setItem("favorites", JSON.stringify(favorites));
   renderFavoritesCount();
@@ -58,7 +58,7 @@ export function addToCart({ _id: productID, name: productName, price, image }) {
   const cart = new Cart(JSON.parse(localStorage.getItem("Cart")));
   const item = new CartItem(productID, productName, price, image);
   cart.addToCart(item);
-  creteToast("Cart", "Item Added To Cart", "shopping-cart.png");
+  creteToast("Cart", "Item Added To Cart", "img/shopping-cart.png");
 }
 export function getCartItems() {
   const cart = new Cart(JSON.parse(localStorage.getItem("Cart")));
@@ -86,7 +86,3 @@ export function getUserData() {
     userToken: localStorage.getItem("token"),
   };
 }
-// getCategories().then((data) => console.log(data));
-// getProducts().then((data) => console.log(data));
-// console.log(getUserData());
-// console.log(isAuthorized());

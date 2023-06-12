@@ -3,8 +3,8 @@ import {
   getUserData,
   isAuthorized,
   getSubTotal as subtotal,
-} from "../globals.js";
-import { creteToast } from "../toast.js";
+} from "./globals.js";
+import { creteToast } from "./toast.js";
 
 if (!isAuthorized()) {
   window.location.href = "/login.html";
@@ -32,7 +32,7 @@ function displayMessage() {
   creteToast(
     "Order",
     `${firstName} added order successfully.`,
-    "order-now.png"
+    "img/order-now.png"
   );
   let messageContainer = document.getElementById("messageContainer");
   messageContainer.innerHTML = `${firstName} thank you for your order!`;
