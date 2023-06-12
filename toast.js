@@ -1,6 +1,6 @@
 const parser = new DOMParser();
 const toastContainer = document.createElement("div");
-toastContainer.style = "position: fixed; bottom:30px; right:30px;";
+toastContainer.style = "position: fixed; bottom:50px; right:30px; z-index:12;";
 document.body.appendChild(toastContainer);
 
 function createToastEl(title, message, img) {
