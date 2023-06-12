@@ -33,6 +33,9 @@ export function addToFavorites(productId) {
   if (i === -1) {
     favorites.push(productId);
     creteToast("Favorites", "Item Added To Favorites", "img/star.png");
+  } else {
+    favorites.splice(i, 1);
+    creteToast("Favorites", "Item Removed From Favorites", "img/star-2.png");
   }
   localStorage.setItem("favorites", JSON.stringify(favorites));
   renderFavoritesCount();
