@@ -10,9 +10,9 @@ function cleanData(products) {
   const randomSize = () =>
     ["XS", "S", "M", "L", "XL"][Math.floor(Math.random() * 5)];
   return products.map((product) => ({
-    ...product,
     color: randomColor(),
     size: randomSize(),
+    ...product,
   }));
 }
 function reRender() {
